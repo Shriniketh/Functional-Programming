@@ -11,14 +11,22 @@ namespace FunctionalProgramming
     {
         static void Main(string[] args)
         {
-            var numbers = new[] { 3, 5, 8, 9, 7, 11 };
-
-            foreach (var item in numbers.Find(IsPrime).Take(2))
+            foreach (var item in GetRandomNumbers().Find(IsPrime).Take(2))
             {
                 Console.WriteLine(item);
             }
 
             Console.ReadLine();
+        }
+
+        private static IEnumerable<int> GetRandomNumbers()
+        {
+            Random rand = new Random();
+
+            while (true)
+            {
+                yield return rand.Next(500);
+            }
         }
 
         private static IEnumerable<int> Find(this IEnumerable<int> values, Func<int, bool> test)
