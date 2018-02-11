@@ -13,7 +13,7 @@ namespace FunctionalProgramming
         {
             var numbers = new[] { 3, 5, 8, 9, 7, 11 };
 
-            foreach (var item in numbers.Find(IsEven))
+            foreach (var item in numbers.Find(IsPrime).Take(2))
             {
                 Console.WriteLine(item);
             }
@@ -27,13 +27,12 @@ namespace FunctionalProgramming
 
             foreach (var item in values)
             {
+                Console.WriteLine("Testing for {0}", item);
                 if (test(item))
                 {
-                   numbers.Add(item);
+                    yield return item;
                 }                
             }
-
-            return numbers;
         }
 
         public static bool IsPrime(int number)
