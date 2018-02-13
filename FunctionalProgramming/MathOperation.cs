@@ -7,19 +7,29 @@ using System.Threading.Tasks;
 
 namespace FunctionalProgramming
 {
-    public static class Program
+    public static class MathOperation
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            foreach (var item in GetRandomNumbers().Find(IsPrime).Take(2))
-            {
-                Console.WriteLine(item);
-            }
+            var numbers = DoMathOperation();
 
             Console.ReadLine();
         }
 
-        private static IEnumerable<int> GetRandomNumbers()
+        public static IList<int> DoMathOperation()
+        {
+            IList<int> primeNumbers = new List<int>();
+
+            foreach (var item in GetRandomNumbers().Find(IsPrime).Take(2))
+            {
+                primeNumbers.Add(item);
+                Console.WriteLine(item);
+            }
+
+            return primeNumbers;
+        }
+
+        public static IEnumerable<int> GetRandomNumbers()
         {
             Random rand = new Random();
 
